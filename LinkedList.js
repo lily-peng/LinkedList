@@ -50,12 +50,45 @@ LinkedList.remove = function() {
     }
 };
 
+LinkedList.findNtoLast = function(n) {
+    if (n === 0)
+        return LinkedList.tail;
+    else if (n > LinkedList.length){
+        return null;
+    }
+    else if (n == LinkedList.length-1) {
+        return LinkedList.head;
+    }
+    else {
+        var newNum = LinkedList.length - n;
+        var iter = LinkedList.head;
+        for (var i = 0; i < newNum; i++) {
+            if (i == newNum-1)
+                return iter;
+            iter = iter.next;
+        }
+    }
+};
+
+
+// TESTS
+
 LinkedList.append("first");
 LinkedList.append("second");
 LinkedList.append("third");
 LinkedList.append("fourth");
+LinkedList.append("fifth");
+LinkedList.append("sixth");
+LinkedList.append("seventh");
 LinkedList.remove();
 
 console.log(LinkedList.head);
 console.log(LinkedList.tail);
 console.log(LinkedList.length);
+console.log("0: ", LinkedList.findNtoLast(0));
+console.log("1: ", LinkedList.findNtoLast(1));
+console.log("2: ", LinkedList.findNtoLast(2));
+console.log("3: ", LinkedList.findNtoLast(3));
+console.log("4: ", LinkedList.findNtoLast(4));
+console.log("5: ", LinkedList.findNtoLast(5));
+console.log("6: ", LinkedList.findNtoLast(6));
